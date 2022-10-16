@@ -1,0 +1,20 @@
+pipeline {
+    agent any
+    triggers { 
+        cron('30 17 * * *') 
+        }
+    stages {
+        stage ('nightclone') {
+            steps {
+                git url: 'https://github.com/gopikrishna179/shopizer.git',
+                 branch: 'release'
+            }
+        }
+        stage ('build') {
+            steps {
+                sh 'mvn clean install'
+            }
+        }
+
+    }
+}
