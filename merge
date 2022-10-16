@@ -19,7 +19,7 @@ pipeline {
         stage ('merge') {
             steps {
                 sh 'git checkout develop'
-                sh 'git merge develop release --no -ff'
+                sh 'git merge develop release --no-ff'
             }   
         }
         stage ('build') {
